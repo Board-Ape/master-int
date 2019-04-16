@@ -49,15 +49,31 @@ class LinkedList {
             return this.append(value)
         }
         const newNode = new Node(value)
+        const leader = this.traverseToindex(index)
+
+        newNode.next = leader.next
+        leader.next = newNode
+    }
+    
+    traverseToindex(index) {
         let currentNode = this.head
         let counter = 1
         while (counter < index) {
             currentNode = currentNode.next
             counter++
         }
+        return currentNode
+    }
 
-        newNode.next = currentNode.next
-        currentNode.next = newNode
+    remove(index) {
+        if (index > this.length) {
+            return 'Outside of range'
+        }
+        const leader = this.traverseToindex(index - 1);
+        let unwantedNode = leader.next;
+        leader.next = unwantedNode.next;
+        this.length--;
+        return this.printList()
     }
 }
 
@@ -71,4 +87,5 @@ myLinkedList.prepend(60);
 console.log(myLinkedList.printList());
 myLinkedList.insert(2, 100)
 console.log(myLinkedList.printList());
-
+myLinkedList.remove(2)
+console.log(myLinkedList.printList());
