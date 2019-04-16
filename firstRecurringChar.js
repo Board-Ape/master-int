@@ -10,37 +10,39 @@
 
 
 // Naive 0(n2) approach
-function hasDuplicateValue(array) {
-    for (let i = 0; i < array.length; i++) {
-        for (let j = i + 1; j < array.length; j++) {
-            if (array[i] === array[j]) {
-                return array[i]
-            }
-        }
-    }
-    return undefined
-}
-
-// 0(n)  with set()
 // function hasDuplicateValue(array) {
-//     if (typeof array !== 'object' || array.length < 1) {
-//         return "Invalid array"
-//     }
-
-//     let mapSet = new Set()
-//     let result = 'No Duplicates'
-
-//     for (let number of array1) {
-//         if (!mapSet.has(number)) {
-//             mapSet.add(number)
-//         } else {
-//             result = number
-//             break;
+//     for (let i = 0; i < array.length; i++) {
+//         for (let j = i + 1; j < array.length; j++) {
+//             if (array[i] === array[j]) {
+//                 return array[i]
+//             }
 //         }
 //     }
-
-//     return result
+//     return undefined
 // }
+
+// 0(n)  with set()
+// This is more accurate to what the question requires.
+function hasDuplicateValue(array) {
+    if (typeof array !== 'object' || array.length < 1) {
+        return "Invalid array"
+    }
+
+    let mapSet = new Set()
+    let result = 'No Duplicates'
+
+    for (let number of array1) {
+        if (!mapSet.has(number)) {
+            mapSet.add(number)
+        } else {
+            result = number
+            break;
+        }
+    }
+
+    return result
+}
+
 
 
 const array1 = [2, 5, 1, 2, 3, 4, 1, 2, 4];
