@@ -1,6 +1,13 @@
 // Why are linked list better or worse than hash tables or arrays?
 // Some sort of order with Linked List
 
+class Node {
+    constructor(value) {
+        this.value = value,
+        this.next = null
+    }
+}
+
 class LinkedList {
     constructor(value) {
         this.head = {
@@ -12,10 +19,7 @@ class LinkedList {
     }
 
     append(value) {
-        const newNode = {
-            value: value,
-            next: null
-        };
+        const newNode = new Node(value)
         this.tail.next = newNode;
         this.tail = newNode;
         this.length++;
@@ -23,14 +27,37 @@ class LinkedList {
     }
 
     prepend(value) {
-        const newNode = {
-            value: value,
-            next: null
-        }
+        const newNode = new Node(value)
         newNode.next = this.head
         this.head = newNode
         this.length++
         return this
+    }
+
+    printList() {
+        const array = []
+        let currentNode = this.head
+        while (currentNode) {
+            array.push(currentNode.value)
+            currentNode = currentNode.next
+        }
+        return array
+    }
+
+    insert(index, value) {
+        if (index >= index.length) {
+            return this.append(value)
+        }
+        const newNode = new Node(value)
+        let currentNode = this.head
+        let counter = 1
+        while (counter < index) {
+            currentNode = currentNode.next
+            counter++
+        }
+
+        newNode.next = currentNode.next
+        currentNode.next = newNode
     }
 }
 
@@ -39,5 +66,9 @@ console.log(myLinkedList)
 myLinkedList.append(30)
 console.log(myLinkedList)
 myLinkedList.prepend(10);
-console.log(myLinkedList)
+myLinkedList.prepend(60);
+
+console.log(myLinkedList.printList());
+myLinkedList.insert(2, 100)
+console.log(myLinkedList.printList());
 
