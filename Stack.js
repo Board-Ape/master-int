@@ -7,47 +7,64 @@ class Node {
 
 class Stack {
     constructor() {
-        this.top = null;
-        this.bottom = null;
-        this.length = 0;
+        this.array = []
     }
 
     peek() {
-        if (this.length === 0) {
-            return "No items"
-        }
-
-        return this.top
+        return this.array[this.array.length - 1]
     }
 
     push(value) {
-        const newNode = new Node(value);
-
-        if (!this.top) {
-            this.top = newNode;
-            this.bottom = newNode;
-
-            return this
-        } else {
-            const pointer = this.top;
-            this.top = newNode
-            this.top.next = pointer
-        }
-
-        this.length++
-        return this
+        this.array.push(value)
     }
 
     pop() {
-        if (!this.top) {
-            return null
-        } 
-        if (this.top === this.bottom) {
-            this.bottom = null
-        }
-        const pointer = this.top
-        point
+        return this.array.pop()
     }
+
+
+  // RAW IMPLEMENTATION
+    //   constructor() {
+    //     this.top = null;
+    //     this.bottom = null;
+    //     this.length = 0;
+    //   }
+  // peek() {
+  //     if (this.length === 0) {
+  //         return "No items"
+  //     }
+
+  //     return this.top
+  // }
+
+  // push(value) {
+  //     const newNode = new Node(value);
+
+  //     if (!this.top) {
+  //         this.top = newNode;
+  //         this.bottom = newNode;
+
+  //         return this
+  //     } else {
+  //         const pointer = this.top;
+  //         this.top = newNode
+  //         this.top.next = pointer
+  //     }
+
+  //     this.length++
+  //     return this
+  // }
+
+  // pop() {
+  //     if (!this.top) {
+  //         return null
+  //     }
+  //     if (this.top === this.bottom) {
+  //         this.bottom = null
+  //     }
+  //     const pointer = this.top
+  //     point
+  // }
 }
 
 const myStack = new Stack()
