@@ -63,6 +63,33 @@ console.log(selectionSort(numbs));
 const array = [2, 65, 34, 2, 1, 7, 8];
 
 function insertionSort(arr) {
+
+    let j;
+
+    for (let i = 0; i < arr.length; i++) {
+        let item = arr[i]
+
+        for (j = i - 1; j > -1 && arr[j] > item; j--) {
+            arr[j+1] = arr[j]
+        }
+
+        arr[j+1] = item
+    }
+
+    return arr
+    // for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i] < arr[0]) {
+    //         arr.unshift(arr.splice(i,1)[0])
+    //     } else {
+    //         for (let j = 1; j < i; j++) {
+    //             if (arr[i] >= arr[j-1] && arr[i] < arr[j]) {
+    //                 arr.splice(j, 0, arr.splice(i,1)[0])
+    //             }
+    //         }
+    //     }
+    // }
+    // return array
+
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] < arr[0]) {
             arr.unshift(arr.splice(i,1)[0])
@@ -75,6 +102,7 @@ function insertionSort(arr) {
         }
     }
     return array
+
 }
 
 console.log(insertionSort(array))
