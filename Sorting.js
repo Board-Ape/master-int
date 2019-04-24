@@ -31,3 +31,26 @@ function bubbleSort(array) {
 }
 
 console.log(bubbleSort(numbers))
+
+const numbs = [2, 65, 34, 2, 1, 7, 8];
+
+function selectionSort(array) {
+
+
+    for (let i = 0; i < array.length; i++) {
+        let lowestIdx = i;
+
+        for (let j = i+1; j < array.length; j++) {
+            if (array[j] < array[lowestIdx]) {
+                lowestIdx = j
+            }   
+        }
+        
+        let temp = array[i];
+        array[i] = array[lowestIdx]
+        array[lowestIdx] = temp
+    }
+    return array
+}
+
+console.log(selectionSort(numbs));
