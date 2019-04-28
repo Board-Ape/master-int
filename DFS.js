@@ -78,8 +78,45 @@ class BinaryTree {
     return this.breadFirstSearchR(result, queue);
   }
 
-  
+  //        9
+  //    4       20
+  // 1    6   15    170
+
+  //        35
+  //    20       39
+  // 10   30   40    50
+
+  inorderDFS() {
+    return traverseInOrder(this.root, []);
+  }
+  // [1, 4, 6, 9, 15, 20, 170]
+
+
+  preorderDFS() {
+    return;
+  }
+  // [9, 4, 1, 6, 20, 15, 170]
+  // [ 35, 20, 10, 30, 39, 40, 50 ]
+
+  postorderDFS() {
+    return;
+  }
+  // [1, 6, 4, 15, 170, 20, 9]
+  // [ 10, 30, 20, 40, 50, 39, 35]
 }
+
+function traverseInOrder(node, result) {
+    if (node.left) {
+        traverseInOrder(node.left, result)
+    }
+    result.push(node.value)
+    if (node.right) {
+        traverseInOrder(node.right, result)
+    }
+    return result
+}
+
+
 
 function traverse(node) {
   const tree = { value: node.value };
@@ -91,7 +128,6 @@ function traverse(node) {
 const myTree = new BinaryTree();
 myTree.insert(35);
 myTree.insert(30);
-myTree.insert(33);
 myTree.insert(40);
 myTree.insert(20);
 myTree.insert(10);
@@ -100,3 +136,9 @@ myTree.insert(50);
 console.log(JSON.stringify(traverse(myTree.root)));
 console.log(myTree.breadFirstSearch());
 console.log(myTree.breadFirstSearchR([], [myTree.root]));
+console.log(myTree.inorderDFS());
+                                // [ 10, 20, 30, 35, 40, 39, 50 ]
+console.log(myTree.preorderDFS());
+                                // [ 35, 20, 10, 30, 39, 40, 50 ]
+console.log(myTree.postorderDFS());
+                                // [ 10, 30, 20, 40, 50, 39, 35]
