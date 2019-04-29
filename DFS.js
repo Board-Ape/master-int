@@ -99,6 +99,18 @@ class BinaryTree {
   // [1, 6, 4, 15, 170, 20, 9]
   }
 
+  isValidBFS() {
+      return isValidBST(this.root)
+  }
+
+}
+
+function isValidBST(root, upperBound = Infinity, lowerBound = -Infinity) {
+    if (!root) return true;
+    if (root.val >= upperBound || root.val <= lowerBound) return false;
+
+    return isValidBST(root.left, Math.min(upperBound, root.val), lowerBound) &&
+           isValidBST(root.right, upperBound, Math.max(lowerBound, root.val))
 }
 
 function traverseInOrder(node, result) {
@@ -161,3 +173,4 @@ console.log(myTree.preorderDFS());
                                 //  [ 35, 20, 10, 30, 39, 45, 50 ]
 console.log(myTree.postorderDFS());
                                 //   [ 10, 30, 20, 45, 50, 39, 35 ]
+console.log(myTree.isValidBFS());
