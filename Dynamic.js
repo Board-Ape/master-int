@@ -122,3 +122,21 @@ function buySellStock(arr) {
 console.log(buySellStock([7, 1, 5, 3, 6, 4]));
 
 
+var missingNumber = function(nums) {
+    let mySet = new Set()
+
+    for (let i = 0; i <= nums.length; i++) {
+        mySet.add(i)
+    }
+
+    for (let num of nums) {
+        if (mySet.has(num)) {
+            mySet.delete(num)
+        }
+    }
+
+    let result = Array.from(mySet)[0];
+    return result
+};
+
+console.log(missingNumber([3,0,1]))
